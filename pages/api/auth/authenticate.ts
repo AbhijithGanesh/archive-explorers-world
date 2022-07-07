@@ -1,18 +1,19 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { supabase } from "../../../utils/supabase";
 
-let delete_users = async (
+let authenticate = async (
   _req: NextApiRequest,
   _res: NextApiResponse
 ): Promise<void> => {
-  if (_req.method == "DELETE") {
-    await supabase.from("Users").delete().match({
-      username: _req?.body?.username!,
+  if (_req.method == "POST") {
+    await supabase.auth.signIn({
+      email: _req?.body?.email!,
+      password: _req?.body?.password!,
     });
-    _res.status(200).send("Deleted");
+    _res.status(200).send("Created");
   } else {
     _res.status(405).send("Forbidden!");
   }
 };
 
-export default delete_users;
+export default authenticate;

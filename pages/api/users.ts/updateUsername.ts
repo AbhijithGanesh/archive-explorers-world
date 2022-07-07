@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { supabase } from "../../../utils/supabase";
 
-let create_user = async (
+let update_users = async (
   _req: NextApiRequest,
   _res: NextApiResponse
 ): Promise<void> => {
@@ -20,4 +20,4 @@ let create_user = async (
   }
 };
 
-export default create_user;
+export default update_users;
