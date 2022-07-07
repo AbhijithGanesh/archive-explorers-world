@@ -6,7 +6,7 @@ let fetch_leadboard = async (
   _req: NextApiRequest,
   _res: NextApiResponse
 ): Promise<void> => {
-  if (_req.method == "POST") {
+  if (_req.method == "GET") {
     let data: PostgrestResponse<any> = await supabase
       .from("Users")
       .select("username")
